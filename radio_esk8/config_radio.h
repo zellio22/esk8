@@ -1,4 +1,4 @@
-/*config.h*/
+/*config_radio.h*/
 
 // mode skate par defaut 
 const int modeesc = 1; // 1 souple 2 normal 3 no brain 

@@ -8,9 +8,9 @@
 #include <Adafruit_SSD1306.h>
 
 //includ prog
-#include "display.h"
-#include "fonc.h"
-#include "config.h"
+#include "display_radio.h"
+#include "fonc_radio.h"
+#include "config_radio.h"
 
 
 

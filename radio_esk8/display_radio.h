@@ -1,7 +1,7 @@
-/*display.h*/
+/*display_radio.h*/
 
 #include "Arduino.h"
-#include "fonc.h"
+#include "fonc_radio.h"
 #include <Adafruit_SSD1306.h>
 
 

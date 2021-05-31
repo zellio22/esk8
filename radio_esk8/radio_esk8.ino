@@ -17,8 +17,13 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);// def du display
 
 //timer
-long time_rf=0;
-long act_display,time_clignote_true,time_clignote_false,time_dist,last_micros;
+long time_rf_tx;
+long act_display;
+long time_clignote_true;
+long time_clignote_false;
+long time_dist;
+long last_micros;
+
 
 //teste
 int potar_speed = A6;
@@ -55,7 +60,7 @@ void setup() {
 	
 	// radio setup
 	radio.setPALevel(RF24_PA_LOW); // RF24_PA_MAX 
-	radio.setPayloadSize(sizeof(data)); // def de la taille à transmetre
+	radio.setPayloadSize(sizeof(data_in)); // def de la taille à transmetre
 	
 	radio.openWritingPipe(address[radioNumber]);
 	radio.openReadingPipe(1, address[!radioNumber]);
@@ -85,26 +90,34 @@ void loop() {
 	if(millis()-act_display > 50){	//actualisation display toute les 50ms
 		act_display = millis();
 		bat_level=(float)analogRead(potar_bat)/10.23;
-		speed=(float)analogRead(potar_speed)/10.23*diametre_roue*pi*0.0036/gear_ratio; // 10.23 convertion max tachy 100tr/s
-		payload.thr=analogRead(potar_thr);
+		speed=(float)payload_in.thachy/10.23*diametre_roue*pi*0.0036/gear_ratio; // 10.23 convertion max tachy 100tr/s
+		payload_out.thr=analogRead(potar_thr);
 		switch_ecran();
 		
 	}
 
-	if(millis()-time_dist > 1000){
+	if(millis()-time_dist > 1000){ // affichage console toutes les secondes
 		time_dist = millis();
+		payload_out.mode=1; // demande d'info
+		//f_radio(1);//envoi de la payload
 		dist_cal(); //calcul de la distance parcourue
 		Serial.print("Km   : "); Serial.println(dist,4);
 		Serial.print("Km/s : "); Serial.println(speed,4);
 		Serial.print("m/s  : "); Serial.println((float)speed/3.6,4);
-		Serial.print("thr  : "); Serial.println(payload.thr);
+		Serial.print("thr  : "); Serial.println(payload_out.thr);
+		Serial.print("Vbat : "); Serial.println(payload_in.tension_bat);
+		Serial.print("Iesc : "); Serial.println(payload_in.courant);
+		Serial.print("mA/h : "); Serial.println(payload_in.amp_hours);
+		Serial.print("W/h  : "); Serial.println(payload_in.watt_hours);
 		Serial.print("lag  : "); Serial.println(millis()-last_micros-1000);
 		last_micros=millis();
-		f_radio(1);//envoi de la payload
-
+		
 		Serial.println(" ");
+		//radio.printPrettyDetails();
+		//f_radio(0);// passage en lecture de la radio 
 	}
-
+	
+	f_radio(0);
 
 }// fin loop
 
@@ -114,8 +127,9 @@ void f_radio(bool role){ 	//fonction radio
 	if (role){
 		// tx mode 
 		radio.stopListening(); // stop lecture
+		radio.setPayloadSize(sizeof(data_out)); // def de la taille a recevoir
 		unsigned long start_timer = micros();                   // time debut
-		bool report = radio.write(&payload, sizeof(data));     // transmet et save dans repport
+		bool report = radio.write(&payload_out, sizeof(data_out));     // transmet et save dans repport
 		unsigned long end_timer = micros();                     // time fin
 		
 		if (report) {
@@ -143,13 +157,15 @@ void f_radio(bool role){ 	//fonction radio
 		radio.startListening();// reprendre lecture
 		uint8_t pipe;
 		if (radio.available(&pipe)) {             	// is there a payload? get the pipe number that recieved it
+			Serial.println("RX available");
+			radio.setPayloadSize(sizeof(data_in)); // def de la taille a recevoir
 			uint8_t bytes = radio.getPayloadSize(); // get the size of the payload
-			radio.read(&payload, sizeof(data));            // fetch payload from FIFO
+			radio.read(&payload_in, sizeof(data_in));            // fetch payload from FIFO
 			Serial.print(F("Received "));
 			Serial.print(bytes);                    // print the size of the payload
 			Serial.print(F(" bytes on pipe "));
 			Serial.print(pipe);                     // print the pipe number
-			Serial.print(F(": "));
+			Serial.println(F(": "));
 
 
 		}		

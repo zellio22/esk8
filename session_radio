@@ -1,0 +1,21 @@
+<NotepadPlus>
+    <Session activeView="1">
+        <mainView activeIndex="0">
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="2056" startPos="2517" endPos="2517" selMode="0" lang="C++" encoding="-1" userReadOnly="no" filename="C:\Users\Julien\Documents\GitHub\autre\ben_esk8\split\radio_esk8\radio_esk8.ino" backupFilePath="" originalFileLastModifTimestamp="455983331" originalFileLastModifTimestampHigh="30889339" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="7209018" mapWrapIndentMode="-1" mapIsWrap="no">
+                <Fold line="35" />
+            </File>
+        </mainView>
+        <subView activeIndex="2">
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1740" startPos="771" endPos="771" selMode="0" lang="C++" encoding="-1" userReadOnly="no" filename="C:\Users\Julien\Documents\GitHub\autre\ben_esk8\split\radio_esk8\fonc.cpp" backupFilePath="" originalFileLastModifTimestamp="1094044104" originalFileLastModifTimestampHigh="30889339" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="1815237310" mapWrapIndentMode="-1" mapIsWrap="no">
+                <Fold line="15" />
+                <Fold line="37" />
+                <Fold line="54" />
+            </File>
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="792" startPos="380" endPos="380" selMode="0" lang="C++" encoding="-1" userReadOnly="no" filename="C:\Users\Julien\Documents\GitHub\autre\ben_esk8\split\radio_esk8\fonc.h" backupFilePath="" originalFileLastModifTimestamp="-707868963" originalFileLastModifTimestampHigh="30889313" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="1815237310" mapWrapIndentMode="-1" mapIsWrap="no">
+                <Fold line="6" />
+            </File>
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1122" startPos="649" endPos="649" selMode="0" lang="C++" encoding="-1" userReadOnly="no" filename="C:\Users\Julien\Documents\GitHub\autre\ben_esk8\split\radio_esk8\config.h" backupFilePath="" originalFileLastModifTimestamp="942975686" originalFileLastModifTimestampHigh="30889339" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="0" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1740" startPos="134" endPos="134" selMode="0" lang="C++" encoding="-1" userReadOnly="no" filename="C:\Users\Julien\Documents\GitHub\autre\ben_esk8\split\radio_esk8\display.h" backupFilePath="" originalFileLastModifTimestamp="-19621032" originalFileLastModifTimestampHigh="30889312" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="0" mapWrapIndentMode="-1" mapIsWrap="no" />
+        </subView>
+    </Session>
+</NotepadPlus>
